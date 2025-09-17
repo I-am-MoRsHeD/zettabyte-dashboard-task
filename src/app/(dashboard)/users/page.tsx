@@ -1,11 +1,34 @@
-import React from 'react';
+"use client";
 
-const page = () => {
+import { useState } from "react";
+import { useUsers } from "@/hooks/useUsers";
+import UserTable from "./Components/UserTable";
+import { IUser } from "@/types";
+import Modal from "./Components/Modal";
+import SingleUserDetails from "./Components/SingleUserDetails";
+
+export default function UsersPage() {
+    const { data: users, loading, error } = useUsers();
+
+    const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
+
+    if (loading) return <p>Loading users...</p>;
+    if (error) return <p className="text-red-500">{error}</p>;
+
     return (
-        <div>
-            this is user page
+        <div className="p-8 space-y-6">
+            <h1 className="text-2xl font-bold text-gray-800">Users</h1>
+
+            {users && (
+                <UserTable users={users} onRowClick={(user) => setSelectedUser(user)} />
+            )}
+
+            <Modal
+                isOpen={!!selectedUser}
+                onClose={() => setSelectedUser(null)}
+            >
+                {selectedUser && <SingleUserDetails user={selectedUser} />}
+            </Modal>
         </div>
     );
-};
-
-export default page;
+}
