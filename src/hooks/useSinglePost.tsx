@@ -2,8 +2,8 @@
 import { IPost } from "@/types";
 import { useEffect, useState } from "react";
 
-export const usePosts = () => {
-    const [data, setData] = useState<IPost[] | null>(null);
+export const useSinglePost = (id: number) => {
+    const [data, setData] = useState<IPost | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -12,7 +12,7 @@ export const usePosts = () => {
             try {
                 setLoading(true);
 
-                const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
 
                 if (!res.ok) {
                     setError("Failed to fetch posts");
@@ -28,7 +28,7 @@ export const usePosts = () => {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     return { data, loading, error };
 };
