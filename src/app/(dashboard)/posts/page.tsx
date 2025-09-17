@@ -7,8 +7,21 @@ import { motion } from 'framer-motion';
 const PostPage = () => {
     const { data: posts, loading, error } = usePosts();
 
-    if (loading) return <p>Loading posts...</p>;
-    if (error) return <p className="text-red-500">{error}</p>;
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <p className="text-gray-500 animate-pulse">Loading posts...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <p className="text-red-500">{error}</p>
+            </div>
+        );
+    }
 
     return (
         <div>

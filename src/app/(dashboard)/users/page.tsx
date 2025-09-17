@@ -12,8 +12,21 @@ export default function UsersPage() {
 
     const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
 
-    if (loading) return <p>Loading users...</p>;
-    if (error) return <p className="text-red-500">{error}</p>;
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <p className="text-gray-500 animate-pulse">Loading users...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <p className="text-red-500">{error}</p>
+            </div>
+        );
+    }
 
     return (
         <div className="p-8 space-y-6">

@@ -14,14 +14,10 @@ export const useUsers = () => {
 
                 const res = await fetch("https://jsonplaceholder.typicode.com/users");
 
-                if (!res.ok) {
-                    setError("Failed to fetch users");
-                }
-
                 const json = await res.json();
                 setData(json);
             } catch (err: any) {
-                setError(err.message || "Something went wrong");
+                setError("Failed to fetch users!");
             } finally {
                 setLoading(false);
             }

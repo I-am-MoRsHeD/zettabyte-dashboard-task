@@ -14,14 +14,10 @@ export const useSinglePost = (id: number) => {
 
                 const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
 
-                if (!res.ok) {
-                    setError("Failed to fetch posts");
-                }
-
                 const json = await res.json();
                 setData(json);
             } catch (err: any) {
-                setError(err.message || "Something went wrong");
+                setError("Failed to fetch post details!");
             } finally {
                 setLoading(false);
             }
