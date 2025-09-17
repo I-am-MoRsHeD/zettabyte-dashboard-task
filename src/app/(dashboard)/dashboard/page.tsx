@@ -1,6 +1,6 @@
 "use client";
 
-import { stats } from "@/app/static/dashboard";
+import { stats } from "@/static/dashboard";
 import { motion } from "framer-motion";
 
 export default function DashboardPage() {

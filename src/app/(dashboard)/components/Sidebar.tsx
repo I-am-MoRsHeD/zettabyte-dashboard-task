@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import React from "react";
-import { routes } from "@/app/static/routes";
+import { routes } from "@/static/routes";
 
 const Sidebar = () => {
   const pathname = usePathname();
