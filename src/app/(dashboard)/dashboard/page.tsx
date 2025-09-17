@@ -4,7 +4,13 @@ import { stats } from "@/static/dashboard";
 import { motion } from "framer-motion";
 
 export default function DashboardPage() {
-    const chartData = [30, 60, 45, 80, 50, 70, 90];
+    const chartData = [
+        30, 60, 45, 80, 50, 70, 90,
+        65, 40, 75, 55, 85, 95, 35,
+        68, 72, 49, 88, 53
+    ];
+
+
     return (
         <div className="p-8 space-y-8">
             {/* Animated Header */}
@@ -36,7 +42,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Animated Mini Chart */}
-            <div className="bg-white rounded-2xl shadow p-6">
+            <div className="bg-white rounded-2xl shadow p-5">
                 <h2 className="text-lg font-semibold text-gray-700 mb-4">
                     Weekly Activity
                 </h2>
